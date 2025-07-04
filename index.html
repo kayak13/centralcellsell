@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+$1
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Central Sell Cell</title>
@@ -89,10 +90,11 @@
       color: #777;
     }
   </style>
-</head>
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+$1
 <body>
   <header>
-    <img src="/mnt/data/CENTRAL.png" alt="Central Sell Cell Logo" />
+    <img src="https://i.postimg.cc/SXb19j6Y/temp-Imaget-L2-Ot-W.avif" alt="Central Sell Cell Logo" />
   </header>
 
   <nav>
@@ -114,19 +116,23 @@
   </section>
 
   <section id="shop">
-    <h2>🔥 Shop iPhones</h2>
-    <div class="product">
-      <img src="https://via.placeholder.com/100" alt="iPhone 11" />
-      <h3>iPhone 11 - 128GB - Unlocked</h3>
-      <p>Good condition, tested and clean IMEI.</p>
-      <p><strong>$299</strong></p>
-      <a href="https://buy.stripe.com/test-product">Buy with Stripe</a>
-    </div>
-  </section>
+  <h2>🔥 Shop iPhones</h2>
+  <div class="product">
+    <img src="https://i.postimg.cc/jwGdyGXj/temp-Image-Kc4x8w.avif" alt="iPhone 14 Purple" style="width: 120px; border-radius: 8px;" />
+    <h3>iPhone 14 - Purple - 128GB - Unlocked</h3>
+    <p>Excellent condition. Carrier unlocked. Clean IMEI.</p>
+    <p><strong>$380</strong></p>
+    <stripe-buy-button
+      buy-button-id="buy_btn_1RgydUPEdFy75pt5bhJ6Sd60"
+      publishable-key="pk_live_51R6AS1PEdFy75pt5WG3O9pEzfwhFxBXGm6pmxikroyNsUuKgMEslQjRBkNTEnndillDCuWqfI1KchnanNoV0tIVs005GO2s8GS">
+    </stripe-buy-button>
+  </div>
+</section>
 
   <section id="sell">
     <h2>💰 Sell Your Phone</h2>
-    <form action="https://formspree.io/f/moqgpwjy" method="POST">
+    <form action="https://formsubmit.co/kaylacollins3@icloud.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
       <input type="text" name="model" placeholder="Phone Model (e.g., iPhone 12)" required />
       <input type="text" name="carrier" placeholder="Carrier/Unlocked" required />
       <input type="text" name="condition" placeholder="Condition (e.g., Cracked Screen)" required />
