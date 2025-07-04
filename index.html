@@ -122,18 +122,17 @@
       <p><strong>$299</strong></p>
       <a href="https://buy.stripe.com/test-product">Buy with Stripe</a>
     </div>
-    <!-- More products can be added here -->
   </section>
 
   <section id="sell">
     <h2>💰 Sell Your Phone</h2>
-    <form action="#" method="POST">
+    <form action="https://formspree.io/f/moqgpwjy" method="POST">
       <input type="text" name="model" placeholder="Phone Model (e.g., iPhone 12)" required />
       <input type="text" name="carrier" placeholder="Carrier/Unlocked" required />
       <input type="text" name="condition" placeholder="Condition (e.g., Cracked Screen)" required />
       <input type="text" name="price" placeholder="Your Asking Price" required />
       <textarea name="notes" placeholder="Additional Notes"></textarea>
-      <input type="file" name="photo" accept="image/*" />
+      <input type="email" name="email" placeholder="Your Email (for confirmation)" required />
       <button type="submit">Submit for Offer</button>
     </form>
   </section>
