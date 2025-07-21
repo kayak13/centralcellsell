@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You – Central Sell Cell™</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9fafb; color: #222; margin: 0; padding: 0; }
+    .container { max-width: 420px; margin: 40px auto; background: #fff; border-radius: 14px; box-shadow: 0 8px 36px rgba(60,60,60,0.07); padding: 2rem 1.5rem 2.5rem 1.5rem; text-align: center; }
+    h2 { color: #228be6; margin-bottom: 1rem; }
+    form { margin-top: 1.9rem; display: flex; flex-direction: column; gap: 1rem; }
+    input[type="file"] { border: 1px solid #ddd; padding: 10px; border-radius: 6px; background: #fafcff; }
+    button { background: #228be6; color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 1.1rem; cursor: pointer; transition: background 0.18s; }
+    button:hover { background: #155fa0; }
+    .info { font-size: 1rem; color: #444; margin-top: 1rem; }
+    .logo { margin-bottom: 1.3rem; }
+    .contact { font-size: .95em; color:#888; margin-top:2em;}
+    .contact a { color:#228be6; text-decoration:none;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="/logo.png" alt="Central Sell Cell" width="90">
+    </div>
+    <h2>Thank You for Your Payment!</h2>
+    <p class="info">
+      You’re almost done. Please upload your iPhone screenshots, photos, or documents for your checkup.<br>
+      <strong>We’ll text you as soon as we receive your upload!</strong>
+    </p>
+    <form action="YOUR_UPLOAD_HANDLER_URL" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" id="file" required>
+      <button type="submit">Submit File</button>
+    </form>
+    <div class="contact">
+      Need help? Text us at [YOUR NUMBER] or DM <a href="https://instagram.com/centralcellsell" target="_blank">@centralcellsell</a>
+    </div>
+  </div>
+</body>
+</html>
