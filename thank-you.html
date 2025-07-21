@@ -272,23 +272,25 @@
       if (steps[currentStep]) steps[currentStep].classList.add('active');
     }
 
-    // Prevent form submit on Enter, except on last step
-    document.getElementById('wizardForm').addEventListener('keydown', function(e){
-      if (e.key === "Enter") {
-        e.preventDefault();
-        if (currentStep < steps.length - 1) nextStep();
-      }
-    });
-
-    // Submission: Show thank you, redirect to home after short delay
-    document.getElementById('wizardForm').addEventListener('submit', function(e){
+   // Prevent form submit on Enter, except on last step
+  document.getElementById('wizardForm').addEventListener('keydown', function(e){
+    if (e.key === "Enter") {
       e.preventDefault();
-      document.getElementById('wizardForm').style.display = "none";
-      document.getElementById('thanksMsg').style.display = "block";
-      setTimeout(function() {
-        window.location.href = "index.html";
-      }, 4000); // 4 seconds then redirect
-    });
-  </script>
+      if (currentStep < steps.length - 1) nextStep();
+    }
+  });
+
+  // Let the form submit naturally, but show a thank-you message instantly
+  document.getElementById('wizardForm').addEventListener('submit', function() {
+    // Do NOT preventDefault — let it submit
+    document.getElementById('wizardForm').style.display = "none";
+    document.getElementById('thanksMsg').style.display = "block";
+
+    // Optional redirect after a delay (Formspree will already redirect if set)
+    setTimeout(function() {
+      window.location.href = "index.html";
+    }, 4000);
+  });
+</script>
 </body>
 </html>
