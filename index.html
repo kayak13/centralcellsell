@@ -2,80 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Thank You – Central Sell Cell™</title>
+  <title>Central Sell Cell™ – $10 iPhone Checkup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Visalia's fast, friendly iPhone fix checkup. Pay $10, get a pro diagnosis before wasting money on repairs!">
   <style>
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f9fafb;
-      color: #222;
-      margin: 0; padding: 0;
-    }
-    .container {
-      max-width: 420px;
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 8px 36px rgba(60,60,60,0.07);
-      padding: 2rem 1.5rem 2.5rem 1.5rem;
-      text-align: center;
-    }
-    h2 {
-      color: #228be6;
-      margin-bottom: 1rem;
-    }
-    form {
-      margin-top: 1.7rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    input[type="file"] {
-      border: 1px solid #ddd;
-      padding: 10px;
-      border-radius: 6px;
-      background: #fafcff;
-    }
-    button {
-      background: #228be6;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.18s;
-    }
-    button:hover {
-      background: #155fa0;
-    }
-    .info {
-      font-size: 1rem;
-      color: #444;
-      margin-top: 1rem;
-    }
-    .logo {
-      margin-bottom: 1.3rem;
-    }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f7fa; margin: 0; color: #222; }
+    .container { max-width: 440px; margin: 2.5rem auto; background: #fff; border-radius: 18px; box-shadow: 0 8px 36px rgba(60,60,60,0.10); padding: 2.3rem 1.4rem 2.3rem; }
+    .logo { margin-bottom: 1.3rem; text-align:center;}
+    .logo img { width: 90px; }
+    h1 { color: #228be6; font-size: 2rem; margin-bottom: 0.3em; }
+    h2 { color: #1a202c; margin-top: 2.2em; font-size: 1.18em;}
+    ul { padding-left: 1.1em; margin-top:.6em;}
+    li { margin-bottom: .5em; }
+    .stripe-section { margin: 2.3em auto 1.2em; text-align: center; }
+    .note { color: #555; font-size: 0.97em; margin-bottom:1em;}
+    .cta { font-weight:600; font-size:1.04em; margin-top:1em;}
+    .contact { font-size: .95em; color:#888; margin-top:2.2em;}
+    .contact a { color:#228be6; text-decoration:none;}
+    .upsell { margin-top:2em; font-size:1em; background: #f7fbff; border-radius: 7px; padding: 1.1em 1em 1.2em;}
+    @media (max-width: 600px) { .container {padding: 1em;}}
   </style>
 </head>
 <body>
   <div class="container">
     <div class="logo">
-      <img src="/logo.png" alt="Central Sell Cell" width="90">
+      <img src="/logo.png" alt="Central Sell Cell Logo">
     </div>
-    <h2>Thank You for Your Payment!</h2>
-    <p class="info">
-      You’re almost done. Please upload your iPhone screenshots, photos, or documents for your checkup. <br>
-      <strong>We’ll text you as soon as we receive your upload!</strong>
+    <h1>📱 Central Sell Cell™</h1>
+    <div class="cta">
+      <strong>$10 iPhone Checkup – Find Out If It’s Fixable Before You Waste Time or Money</strong>
+    </div>
+    <p style="margin-top:1.2em;">
+      Cracked screen? Phone acting up?<br>
+      <span style="color:#228be6;font-weight:600;">STOP GUESSING. START CHECKING.</span>
     </p>
-    <form action="YOUR_UPLOAD_HANDLER_URL" method="POST" enctype="multipart/form-data">
-      <input type="file" name="file" id="file" required>
-      <button type="submit">Submit File</button>
-    </form>
-    <p class="info" style="font-size:0.95em; color:#888;">
-      Need help? Text us at [YOUR NUMBER] or DM <a href="https://instagram.com/centralcellsell" target="_blank">@centralcellsell</a>
-    </p>
+    <ul>
+      <li>🔋 Battery health & charging issues</li>
+      <li>🔊 Speaker, mic, and audio checks</li>
+      <li>💧 Water damage indicators</li>
+      <li>📲 Screen, touch, and display problems</li>
+      <li>⚠️ Hidden issues most shops don’t tell you until you pay</li>
+    </ul>
+    <h2>What You Get:</h2>
+    <ul>
+      <li>Step-by-step phone check via text or FaceTime</li>
+      <li>A full “Fixable or Fried?” report</li>
+      <li>FREE local referral to our trusted Visalia repair techs</li>
+      <li>$10 credit if you book a repair with us after</li>
+    </ul>
+    <div class="stripe-section">
+      <div class="note">Pay securely to get your checkup started:</div>
+      <!-- Stripe Buy Button Embed -->
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1RnEhjPEdFy75pt5YtQlpvU5"
+        publishable-key="pk_live_51R6AS1PEdFy75pt5WG3O9pEzfwhFxBXGm6pmxikroyNsUuKgMEslQjRBkNTEnndillDCuWqfI1KchnanNoV0tIVs005GO2s8GS">
+      </stripe-buy-button>
+      <div style="font-size:.95em;color:#555;margin-top:.5em;">After payment, you'll be sent to upload your info.</div>
+    </div>
+    <div class="upsell">
+      <strong>Just want cash?</strong><br>
+      We’ll give you a same-day quote for your broken iPhone—even if it’s only good for parts!
+    </div>
+    <div class="contact">
+      Serving <strong>Visalia City Limits</strong>.<br>
+      DM <a href="https://instagram.com/centralcellsell" target="_blank">@centralcellsell</a> or text “CHECKUP” to [YOUR NUMBER]
+    </div>
   </div>
 </body>
 </html>
