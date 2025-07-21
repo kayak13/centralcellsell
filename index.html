@@ -14,12 +14,19 @@
     h2 { color: #1a202c; margin-top: 2.2em; font-size: 1.18em;}
     ul { padding-left: 1.1em; margin-top:.6em;}
     li { margin-bottom: .5em; }
-    .stripe-section { margin: 2.3em auto 1.2em; text-align: center; }
-    .note { color: #555; font-size: 0.97em; margin-bottom:1em;}
-    .cta { font-weight:600; font-size:1.04em; margin-top:1em;}
+    .form-section { margin: 2.5em 0 1.5em; }
+    .step { display: none; animation: fadeIn .25s; }
+    .step.active { display: block; }
+    .form-btn { background: #228be6; color: #fff; border: none; padding: 12px 26px; border-radius: 6px; font-size: 1.1rem; cursor: pointer; margin-top: 1.3em; }
+    .form-btn[disabled] { background: #ccc; cursor: not-allowed; }
+    input, select, textarea { width: 90%; max-width: 330px; margin: 0 auto; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; }
+    label { display: block; margin-bottom: 1em; font-weight: 500; }
+    .progress { margin: 1.5em auto 1em; font-size: 0.96em; color: #888; }
+    .thanks {margin-top:2em;font-size:1.15em;color:#228be6;display:none;}
     .contact { font-size: .95em; color:#888; margin-top:2.2em;}
     .contact a { color:#228be6; text-decoration:none;}
     .upsell { margin-top:2em; font-size:1em; background: #f7fbff; border-radius: 7px; padding: 1.1em 1em 1.2em;}
+    @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
     @media (max-width: 600px) { .container {padding: 1em;}}
   </style>
 </head>
@@ -50,16 +57,192 @@
       <li>FREE local referral to our trusted Visalia repair techs</li>
       <li>$10 credit if you book a repair with us after</li>
     </ul>
-    <div class="stripe-section">
-      <div class="note">Pay securely to get your checkup started:</div>
-      <!-- Stripe Buy Button Embed -->
-      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-      <stripe-buy-button
-        buy-button-id="buy_btn_1RnEhjPEdFy75pt5YtQlpvU5"
-        publishable-key="pk_live_51R6AS1PEdFy75pt5WG3O9pEzfwhFxBXGm6pmxikroyNsUuKgMEslQjRBkNTEnndillDCuWqfI1KchnanNoV0tIVs005GO2s8GS">
-      </stripe-buy-button>
-      <div style="font-size:.95em;color:#555;margin-top:.5em;">After payment, you'll be sent to upload your info.</div>
+
+    <div class="form-section">
+      <form id="wizardForm" action="https://formspree.io/f/xayrvzle" method="POST" enctype="multipart/form-data">
+        <!-- Step 1 -->
+        <div class="step active">
+          <div class="progress">1 of 17</div>
+          <label>What iPhone model do you have?</label>
+          <input name="iphone_model" required autocomplete="off">
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="progress">2 of 17</div>
+          <label>What is the main problem? (1 sentence)</label>
+          <input name="main_problem" required autocomplete="off">
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="progress">3 of 17</div>
+          <label>Did it get wet?</label>
+          <select name="got_wet" required>
+            <option value="" selected disabled>Select</option>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 4 (conditional) -->
+        <div class="step" id="pluggedInStep">
+          <div class="progress">4 of 17</div>
+          <label>If yes, did you plug it in while wet?</label>
+          <select name="plugged_in_while_wet">
+            <option value="" selected disabled>Select</option>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 5 -->
+        <div class="step">
+          <div class="progress">5 of 17</div>
+          <label>Is it overheating?</label>
+          <select name="overheating" required>
+            <option value="" selected disabled>Select</option>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 6 -->
+        <div class="step">
+          <div class="progress">6 of 17</div>
+          <label>Is it restarting randomly?</label>
+          <select name="restarting" required>
+            <option value="" selected disabled>Select</option>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 7 -->
+        <div class="step">
+          <div class="progress">7 of 17</div>
+          <label>Do all buttons work?</label>
+          <select name="buttons_work" required>
+            <option value="" selected disabled>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 8 (conditional) -->
+        <div class="step" id="whichButtonsStep">
+          <div class="progress">8 of 17</div>
+          <label>Which button(s) don’t work?</label>
+          <input name="which_buttons_dont_work" autocomplete="off" placeholder="e.g. Power, Volume Up">
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 9 -->
+        <div class="step">
+          <div class="progress">9 of 17</div>
+          <label>Does it turn on?</label>
+          <select name="turns_on" required>
+            <option value="" selected disabled>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Sometimes</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 10 -->
+        <div class="step">
+          <div class="progress">10 of 17</div>
+          <label>Does it flash the Apple logo?</label>
+          <select name="flashes_apple_logo" required>
+            <option value="" selected disabled>Select</option>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 11 -->
+        <div class="step">
+          <div class="progress">11 of 17</div>
+          <label>Is your battery life normal?</label>
+          <select name="battery_normal" required>
+            <option value="" selected disabled>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 12 -->
+        <div class="step">
+          <div class="progress">12 of 17</div>
+          <label>Does your Face ID work?</label>
+          <select name="face_id_works" required>
+            <option value="" selected disabled>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not on this model</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 13 -->
+        <div class="step">
+          <div class="progress">13 of 17</div>
+          <label>Does your speaker & mic work?</label>
+          <select name="speaker_mic_work" required>
+            <option value="" selected disabled>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 14 -->
+        <div class="step">
+          <div class="progress">14 of 17</div>
+          <label>Does WiFi work?</label>
+          <select name="wifi_works" required>
+            <option value="" selected disabled>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 15 -->
+        <div class="step">
+          <div class="progress">15 of 17</div>
+          <label>Does brightness adjust normally?</label>
+          <select name="brightness_works" required>
+            <option value="" selected disabled>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 16 -->
+        <div class="step">
+          <div class="progress">16 of 17</div>
+          <label>Is it cracked?</label>
+          <select name="cracked" required>
+            <option value="" selected disabled>Select</option>
+            <option>No</option>
+            <option>Front only</option>
+            <option>Back only</option>
+            <option>Front and Back</option>
+          </select>
+          <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+        </div>
+        <!-- Step 17 -->
+        <div class="step">
+          <div class="progress">17 of 17</div>
+          <label>Upload a photo or screenshot (optional)</label>
+          <input type="file" name="photo">
+          <input type="text" name="contact_number" placeholder="Your phone number (for follow-up)" required>
+          <button type="submit" class="form-btn">Finish & Send</button>
+        </div>
+      </form>
+      <div class="thanks" id="thanksMsg">
+        Thank you! We got your info and will text you soon.<br>
+        <a href="index.html">Back to Home</a>
+      </div>
     </div>
+
     <div class="upsell">
       <strong>Just want cash?</strong><br>
       We’ll give you a same-day quote for your broken iPhone—even if it’s only good for parts!
@@ -69,5 +252,79 @@
       Text “CHECKUP” to <a href="tel:5593020057">559-302-0057</a>
     </div>
   </div>
+  <script>
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
+
+    function nextStep() {
+      // Step 3: Did it get wet? If Yes, show plug-in step; if No, skip it
+      if (currentStep === 2) {
+        const gotWet = document.querySelector('[name="got_wet"]').value;
+        if (gotWet === "Yes") {
+          steps[currentStep].classList.remove('active');
+          currentStep++;
+          steps[currentStep].classList.add('active');
+          return;
+        } else {
+          // Skip pluggedInStep if not wet
+          steps[currentStep].classList.remove('active');
+          currentStep += 2;
+          steps[currentStep].classList.add('active');
+          return;
+        }
+      }
+      // After pluggedInStep go to next
+      if (currentStep === 3) {
+        steps[currentStep].classList.remove('active');
+        currentStep++;
+        steps[currentStep].classList.add('active');
+        return;
+      }
+      // Step 7: Do all buttons work? If No, show which button(s) step; if Yes, skip
+      if (currentStep === 6) {
+        const buttonsWork = document.querySelector('[name="buttons_work"]').value;
+        if (buttonsWork === "No") {
+          steps[currentStep].classList.remove('active');
+          currentStep++;
+          steps[currentStep].classList.add('active');
+          return;
+        } else {
+          // Skip whichButtonsStep if all buttons work
+          steps[currentStep].classList.remove('active');
+          currentStep += 2;
+          steps[currentStep].classList.add('active');
+          return;
+        }
+      }
+      // After whichButtonsStep go to next
+      if (currentStep === 7) {
+        steps[currentStep].classList.remove('active');
+        currentStep++;
+        steps[currentStep].classList.add('active');
+        return;
+      }
+      // General step advance
+      steps[currentStep].classList.remove('active');
+      currentStep++;
+      if (steps[currentStep]) steps[currentStep].classList.add('active');
+    }
+
+    // Prevent form submit on Enter, except on last step
+    document.getElementById('wizardForm').addEventListener('keydown', function(e){
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (currentStep < steps.length - 1) nextStep();
+      }
+    });
+
+    // Submission: Show thank you, hide form, do NOT prevent submission.
+    document.getElementById('wizardForm').addEventListener('submit', function(e){
+      // This time, let the form submit to Formspree!
+      // Show thank you message right away (for user feedback)
+      document.getElementById('wizardForm').style.display = "none";
+      document.getElementById('thanksMsg').style.display = "block";
+      // Do NOT do e.preventDefault(); so Formspree gets the submission.
+    });
+  </script>
 </body>
-</html>
+</html>es stripe payment before 
