@@ -5,19 +5,242 @@
   <title>Thank You – Central Sell Cell™</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    body<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You – Central Sell Cell™</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9fafb; color: #222; margin: 0; padding: 0; }
-    .container { max-width: 420px; margin: 40px auto; background: #fff; border-radius: 14px; box-shadow: 0 8px 36px rgba(60,60,60,0.07); padding: 2rem 1.5rem 2.5rem 1.5rem; text-align: center; }
-    h2 { color: #228be6; margin-bottom: 1rem; }
-    form { margin-top: 1.9rem; display: flex; flex-direction: column; gap: 1rem; }
-    input[type="file"] { border: 1px solid #ddd; padding: 10px; border-radius: 6px; background: #fafcff; }
-    button { background: #228be6; color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 1.1rem; cursor: pointer; transition: background 0.18s; }
-    button:hover { background: #155fa0; }
-    .info { font-size: 1rem; color: #444; margin-top: 1rem; }
-    .logo { margin-bottom: 1.3rem; }
+    .container { max-width: 430px; margin: 40px auto; background: #fff; border-radius: 14px; box-shadow: 0 8px 36px rgba(60,60,60,0.08); padding: 2.2rem 1.2rem 2.4rem; text-align: center;}
+    .logo { margin-bottom: 1.2rem; }
+    h2 { color: #228be6; margin-bottom: 1.1rem; }
+    .step { display: none; animation: fadeIn .25s; }
+    .step.active { display: block; }
+    .form-btn { background: #228be6; color: #fff; border: none; padding: 12px 26px; border-radius: 6px; font-size: 1.1rem; cursor: pointer; margin-top: 1.3em; }
+    .form-btn[disabled] { background: #ccc; cursor: not-allowed; }
+    input, select, textarea { width: 90%; max-width: 330px; margin: 0 auto; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; }
+    label { display: block; margin-bottom: 1em; font-weight: 500; }
+    .progress { margin: 1.5em auto 1em; font-size: 0.96em; color: #888; }
     .contact { font-size: .95em; color:#888; margin-top:2em;}
-    .contact a { color:#228be6; text-decoration:none;}
+    @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
   </style>
 </head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="/logo.png" alt="Central Sell Cell" width="90">
+    </div>
+    <h2>Quick iPhone Checkup</h2>
+    <p style="color:#444;">Answer a few quick questions so we can help you fast.</p>
+    <form id="wizardForm" action="https://formspree.io/f/xayrvzle" method="POST" enctype="multipart/form-data">
+      <!-- Step 1 -->
+      <div class="step active">
+        <div class="progress">1 of 15</div>
+        <label>What iPhone model do you have?</label>
+        <input name="iphone_model" required autocomplete="off">
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 2 -->
+      <div class="step">
+        <div class="progress">2 of 15</div>
+        <label>What is the main problem? (1 sentence)</label>
+        <input name="main_problem" required autocomplete="off">
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 3 -->
+      <div class="step">
+        <div class="progress">3 of 15</div>
+        <label>Did it get wet?</label>
+        <select name="got_wet" required>
+          <option value="" selected disabled>Select</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 4 (conditional) -->
+      <div class="step" id="pluggedInStep">
+        <div class="progress">4 of 15</div>
+        <label>If yes, did you plug it in while wet?</label>
+        <select name="plugged_in_while_wet">
+          <option value="" selected disabled>Select</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 5 -->
+      <div class="step">
+        <div class="progress">5 of 15</div>
+        <label>Is it overheating?</label>
+        <select name="overheating" required>
+          <option value="" selected disabled>Select</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 6 -->
+      <div class="step">
+        <div class="progress">6 of 15</div>
+        <label>Is it restarting randomly?</label>
+        <select name="restarting" required>
+          <option value="" selected disabled>Select</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 7 -->
+      <div class="step">
+        <div class="progress">7 of 15</div>
+        <label>Do all buttons work?</label>
+        <select name="buttons_work" required>
+          <option value="" selected disabled>Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 8 -->
+      <div class="step">
+        <div class="progress">8 of 15</div>
+        <label>Does it flash the Apple logo?</label>
+        <select name="flashes_apple_logo" required>
+          <option value="" selected disabled>Select</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 9 -->
+      <div class="step">
+        <div class="progress">9 of 15</div>
+        <label>Is your battery life normal?</label>
+        <select name="battery_normal" required>
+          <option value="" selected disabled>Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 10 -->
+      <div class="step">
+        <div class="progress">10 of 15</div>
+        <label>Does your Face ID work?</label>
+        <select name="face_id_works" required>
+          <option value="" selected disabled>Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Not on this model</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 11 -->
+      <div class="step">
+        <div class="progress">11 of 15</div>
+        <label>Does your speaker & mic work?</label>
+        <select name="speaker_mic_work" required>
+          <option value="" selected disabled>Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 12 -->
+      <div class="step">
+        <div class="progress">12 of 15</div>
+        <label>Does WiFi work?</label>
+        <select name="wifi_works" required>
+          <option value="" selected disabled>Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 13 -->
+      <div class="step">
+        <div class="progress">13 of 15</div>
+        <label>Does brightness adjust normally?</label>
+        <select name="brightness_works" required>
+          <option value="" selected disabled>Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 14 -->
+      <div class="step">
+        <div class="progress">14 of 15</div>
+        <label>Is it cracked?</label>
+        <select name="cracked" required>
+          <option value="" selected disabled>Select</option>
+          <option>No</option>
+          <option>Front only</option>
+          <option>Back only</option>
+          <option>Front and Back</option>
+        </select>
+        <button type="button" class="form-btn" onclick="nextStep()">Next</button>
+      </div>
+      <!-- Step 15 -->
+      <div class="step">
+        <div class="progress">15 of 15</div>
+        <label>Upload a photo or screenshot (optional)</label>
+        <input type="file" name="photo">
+        <input type="text" name="contact_number" placeholder="Your phone number (for follow-up)" required>
+        <button type="submit" class="form-btn">Finish & Send</button>
+      </div>
+    </form>
+    <div class="contact">
+      Need help? Text us at [YOUR NUMBER] or DM <a href="https://instagram.com/centralcellsell" target="_blank">@centralcellsell</a>
+    </div>
+  </div>
+  <script>
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
+
+    function nextStep() {
+      // Conditional logic: skip step 4 unless user said 'Yes' to wet
+      if (currentStep === 2) {
+        const gotWet = document.querySelector('[name="got_wet"]').value;
+        if (gotWet === "Yes") {
+          steps[currentStep].classList.remove('active');
+          currentStep++;
+          steps[currentStep].classList.add('active');
+          return;
+        } else {
+          // Skip pluggedInStep if not wet
+          steps[currentStep].classList.remove('active');
+          currentStep += 2;
+          steps[currentStep].classList.add('active');
+          return;
+        }
+      }
+      // After pluggedInStep go to next
+      if (currentStep === 3) {
+        steps[currentStep].classList.remove('active');
+        currentStep++;
+        steps[currentStep].classList.add('active');
+        return;
+      }
+      // General step advance
+      steps[currentStep].classList.remove('active');
+      currentStep++;
+      if (steps[currentStep]) steps[currentStep].classList.add('active');
+    }
+
+    // Prevent form submit on Enter, except on last step
+    document.getElementById('wizardForm').addEventListener('keydown', function(e){
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (currentStep < steps.length - 1) nextStep();
+      }
+    });
+  </script>
+</body>
+</html>
 <body>
   <div class="container">
     <div class="logo">
